@@ -1,0 +1,51 @@
+{%load static%}
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{%url 'index'%}" style="color:rgb(214, 39, 39)">Master Edition</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link {% if request.path == '/' %}active{% endif %}" aria-current=" page"
+                    href="{%url 'index'%}">Home</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle {% if request.path == '/merge' or  request.path == '/word' or request.path == '/excel'%}active{% endif %}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          PDF
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="{%url 'merge'%}">Juntar PDF</a></li>
+                          <li><a class="dropdown-item" href="{%url 'excel'%}">Converter Excel</a></li>
+                          <li><a class="dropdown-item" href="{%url 'word'%}">Converter Word</a></li>
+                          <li><a class="dropdown-item" href="{%url 'image'%}">Converter Image</a></li>                          
+                        </ul>
+                      </li>
+                {%if 1 == 2%}
+                <a class="nav-link {% if request.path == '/video' %}active{% endif %}"" href="{%url 'video'%}">Video</a>
+                <a class="nav-link {% if request.path == '/image' %}active{% endif %}"" href="{%url 'image'%}">Image</a>
+                {%endif%}
+                <a class="nav-link {% if request.path == '/geoloc' %}active{% endif %}"" href="{%url 'geoloc'%}">GeoLoc</a>
+            </div>
+    </div>
+    {%if not user.is_authenticated%}
+    <ul class="nav justify-content-end mr-3">
+        <li class="nav-item" style="margin-right: 15px;"> 
+            <a href="{%url 'login'%}"><button class="btn btn-outline-primary menu">Login</button></a>
+        </li>
+        <li class="nav-item" style="margin-right: 15px;">
+            <a href="{%url 'cadastro'%}"><button class="btn btn-outline-primary menu">Cadastro</button></a>
+        </li>
+    </ul>
+    {%else%}
+    <ul class="nav justify-content-end mr-3">
+        <li class="nav-item" style="margin-right: 15px;"> 
+            <a href="{%url 'accounthome'%}"><button class="btn btn-outline-ligth menu">Conta</button></a>
+        </li>
+        <li class="nav-item" style="margin-right: 15px;">
+            <a href="{%url 'logout'%}"><button class="btn btn-outline-primary menu">Logout</button></a>
+        </li>
+    </ul>
+    </div>
+    {%endif%}
+</nav>

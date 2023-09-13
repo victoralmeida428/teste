@@ -1,0 +1,39 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container card w-25 mt-5">
+    <h1 class="text-center mt-3 mb-3">
+        Perfil
+    </h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-floating mt-2">
+            <input type="{{ form.username.field.widget.input_type }}" disabled class="form-control"
+                id="{{ form.username.id }}" name="{{ form.username.html_name }}" value="{{object}}">
+            <label for="{{form.username.id}}">{{form.username.label}}</label>
+        </div>
+        <div class="form-floating mt-2">
+            <input type="{{ form.first_name.field.widget.input_type }}" class="form-control"
+                id="{{ form.first_name.id }}" name="{{ form.first_name.html_name }}" value="{{object.first_name}}">
+            <label for="{{form.first_name.id}}">{{form.first_name.label}}</label>
+        </div>
+        <div class="form-floating mt-2">
+            <input type="{{ form.last_name.field.widget.input_type }}" class="form-control" id="{{ form.last_name.id }}"
+                name="{{ form.last_name.html_name }}" value="{{object.last_name}}">
+            <label for="{{form.last_name.id}}">{{form.last_name.label}}</label>
+        </div>
+        <div class="form-floating mt-2">
+            <input type="{{ form.email.field.widget.input_type }}" class="form-control" id="{{ form.email.id }}"
+                disabled name="{{ form.email.html_name }}" value="{{object.email}}">
+            <label for="{{form.email.id}}">{{form.email.label}}</label>
+        </div>
+        <div class="form-floating mt-3 text-center mb-4">
+            <a href="{% url 'accounthome'%}"><button type="button" class="btn btn-outline-danger">Voltar</button></a>
+            <input type="submit" value="Salvar" class="btn btn-outline-primary">
+
+        </div>
+    </form>
+
+
+</div>
+{%endblock%}

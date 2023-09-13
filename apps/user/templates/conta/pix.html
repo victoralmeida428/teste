@@ -1,0 +1,10 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container card w-25 h-25 mt-5">
+    
+    <img src="{%static object_list.pix%}">
+    <p class="text-center">R$ {{object_list.valor}},00</p>
+
+</div>
+{%endblock%}

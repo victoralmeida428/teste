@@ -1,0 +1,38 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <h1>Bem-Vindo, {{object.first_name}} {{object.last_name}}</h1>
+    <p>Este é seu painel.</p>
+</div>
+<div class="container">
+    <div class="row d-flex justify-content-between">
+        <div class="col-auto">
+            <a href="{%url 'perfil'%}" style="text-decoration: none;">
+                <div class="card m-3 p-5 h-75 w-100">
+                    <img src="{% static 'image/manage_accounts_FILL0_wght400_GRAD0_opsz48.svg' %}">
+                    <p>Perfil</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-auto">
+            <a href="{%url 'changepass'%}" style="text-decoration: none;">
+            <div class="card m-3 p-5 h-75">
+                <img src="{% static 'image/password.svg' %}">
+                <p>Alterar Senha</p>
+            </div>
+        </a>
+        </div>
+        <div class="col-auto">
+            <a href="{%url 'ajuda'%}" style="text-decoration: none;">
+            <div class="card m-3 p-5 h-75">
+                <img src="{% static 'image/volunteer_activism_FILL0_wght400_GRAD0_opsz48.svg' %}">
+                <p>Ajuda voluntária</p>
+            </div>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+{%endblock%}

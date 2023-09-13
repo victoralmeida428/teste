@@ -1,0 +1,6 @@
+{% load static %}
+{% for alerta in messages%}
+    <div class="alert {% if alerta.tags == 'success' %}alert-success{% elif alerta.tags == 'error' %}alert-danger{% endif %} mt-2" role="alert", style="text-align: center; margin: 0 25% 0 25%;">
+        {{alerta}}
+    </div>
+{%endfor%}

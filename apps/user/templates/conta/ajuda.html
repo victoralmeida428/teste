@@ -1,0 +1,26 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container card w-25 mt-4">
+    <h2 class="text-center mb-3 mt-4">Doe para o projeto crescer</h2>
+    <form method="post">
+        {% csrf_token %}
+        {%for field in form%}
+        {%for error in field.errors%}
+        <div class="alert alert-danger" role="alert">
+            {{error}}
+        </div>
+        {%endfor%}
+        <div class="form-floating mt-2">
+            {{field}}
+            <label for="{{field.id}}">{{field.label}}</label>
+        </div>
+        {%endfor%}
+        <div class="form-floating mt-2 text-center mb-4">
+            <a href="{% url 'accounthome'%}"><button type="button" class="btn btn-outline-danger">Voltar</button></a>
+            <input type="submit" value="Doar" class="btn btn-outline-primary">
+
+        </div>
+    </form>
+</div>
+{%endblock%}

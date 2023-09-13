@@ -1,0 +1,32 @@
+{%extends 'partials/base.html'%}
+{%load static%}
+{%block content%}
+{%load plotly_dash%}
+{%load custom_tags%}
+<div class="container text-center">
+    <div class="container text-left">
+        <div class="container text-center mt-3">
+            <h1>Pegue as coordenadas da sua lista de CEP</h1>
+        </div>
+        {%include 'partials/form_file.html'%}
+    </div>
+</div>
+<div class="dash">
+    {% if request.method == 'POST' %}
+    {% try_except %}
+    <div class="{% plotly_class name='mapa' %} card">
+
+        {% plotly_app name='mapa' ratio=0.75 %}
+
+    </div>
+    {% except %}
+    <div class="container">
+    <div class="alert alert-danger text-center" role="alert">
+        Ocorreu um erro ao exibir o mapa.
+    </div>
+</div>
+
+    {% end_try_except %}
+    {% endif %}
+</div>
+{% endblock %}

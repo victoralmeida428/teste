@@ -1,0 +1,30 @@
+<form method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+
+    <div class="mb-3 mt-5">
+        {%if form.files.errors%}
+        <div class="alert alert-danger align-items-center">
+            {%for error in form.files.errors%}
+            {{error}}
+            {%endfor%}
+        </div>
+        {%endif%}
+        {%for field in form%}
+        <div class="container">
+        <div class="form-floating mb-3">
+            {{field}}
+            <label for="{{field.id}}">{{field.label}}</label>
+        </div>
+    </div>
+
+        {%endfor%}
+
+    </div>
+
+    <div class="mb-3 mt-2 text-left">
+        <button type="submit" class="btn btn-outline-primary">
+            {{button}}
+        </button>
+    </div>
+
+</form>
